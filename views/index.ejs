@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheets/style.css' />
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	</head>
+  
+  <body style="background-color: #008080;">
+    
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class = "container">
+  			<div class = "navbar-header">
+  				<a class = "navbar-brand" href ="#">Course Registration</a>
+  			</div>
+  		</div>
+  	</nav>	
+
+  	<div class = "jumbotron">
+  		<div class = "container">
+  			<div id = 'titleWrap'><h1><%= title %></h1>
+    			<p>Welcome to <%= title %></p>
+    		</div>
+  		</div>
+  	</div>
+
+  	<div class = "container">
+  		<div class = "row">
+  			<h2>Find my schedule</h2>
+  			<div class = "col-md-6 ">	
+  					<div class="form-group">
+  						<label for="sel1">Choose your major:</label>
+  						<select class="form-control" id="sel1">
+	   					    <option>MAT</option>
+	    					<option>CSC</option>
+	   						<option>COM</option>
+	    					<option>ENG</option>
+ 						</select>
+					</div>
+  			</div>
+  			<div class = "col-md-6">
+  				<div class="form-group">
+  						<label for="sel1">Choose your minor:</label>
+  						<select class="form-control" id="sel1">
+	   					    <option>None</option>
+	    					<option>CSC</option>
+	   						<option>COM</option>
+	    					<option>ENG</option>
+	    					<option>MAT</option>
+	    					<option>BIO</option>
+ 						</select>
+					</div>
+  			</div>
+  				  <button type="button" class="btn btn-default btn-sm btn-block">Submit</button>
+
+  	
+  		</div>
+
+  	</div>
+  </body>
+</html>
