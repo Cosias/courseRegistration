@@ -1,3 +1,7 @@
+function saySomething(msg){
+	alert(msg);
+}
+
 var majors = {
 	'MAT':["MAT 115","MAT 225","MAT 221","MAT 222","MAT 223","MAT 229","MAT 232","MAT 251","MAT 324","MAT 330","MAT 345","MAT 460","MAT 491"],
 

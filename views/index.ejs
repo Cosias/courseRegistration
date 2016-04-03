@@ -9,8 +9,8 @@
   
   <body style="background-color: #008080;">
     
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class = "container">
+	 <nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class = "container">
   			<div class = "navbar-header">
   				<a class = "navbar-brand" href ="#">Course Registration</a>
   			</div>
@@ -28,18 +28,21 @@
   	<div class = "container">
   		<div class = "row">
   			<h2>Find my schedule</h2>
-  			<div class = "col-md-6 ">	
-  					<div class="form-group">
-  						<label for="sel1">Choose your major:</label>
-  						<select class="form-control" id="sel1">
-	   					    <option>MAT</option>
-	    					<option>CSC</option>
-	   						<option>COM</option>
-	    					<option>ENG</option>
- 						</select>
-					</div>
-  			</div>
-  			<div class = "col-md-6">
+        <form id='majorForm' onsubmit='getRequirements()'>
+    			<div class = "col-md-6 ">	
+    					<div  class="form-group">
+    						<label for="sel1">Choose your major:</label>
+    						<select class="form-control" id="sel1">
+  	   					    <option>MAT</option>
+  	    					<option>CSC</option>
+  	   						<option>COM</option>
+  	    					<option>ENG</option>
+   						   </select>
+              </div>
+          </div>
+          <button id='submitBtn' type="submit" class="btn btn-default btn-sm btn-block">Submit</button>
+        </form>
+<!--   			<div class = "col-md-6">
   				<div class="form-group">
   						<label for="sel1">Choose your minor:</label>
   						<select class="form-control" id="sel1">
@@ -51,12 +54,86 @@
 	    					<option>BIO</option>
  						</select>
 					</div>
-  			</div>
-  				  <button type="button" class="btn btn-default btn-sm btn-block">Submit</button>
+  			</div> -->
+  		  
+    </div>
 
-  	
-  		</div>
+  	<!--<script src="majReq.js" type="text/javascript"></script>*/-->
+    <script>
+              var majors = {
+          'MAT':["MAT 115","MAT 225","MAT 221","MAT 222","MAT 223","MAT 229","MAT 232","MAT 251","MAT 324","MAT 330","MAT 345","MAT 460","MAT 491"],
 
-  	</div>
+          'CSC':["CSC 120 ","CSC 121","CSC 229","CSC 235","CSC 244","CSC 323","CSC 330","CSC 337","CSC 352","CSC 460","CSC 491"],
+
+          "ENG":["ENG 110","ENG 241","ENG 242","ENG 243","ENG 244","ENG 251","ENG 255","ENG 263","ENG 282","ENG 311","ENG 469","ENG 491"],
+
+          "COM":["COM 230","COM 252","COM 256","COM 260","COM 352","COM 354","COM 355","COM 356","COM 360","COM 468","COM 488","COM 490"]
+        }
+
+
+
+
+        var genEdCourses = {
+          'Arts and Fine Arts': ["ART 129","ART 135","ART 136","ART 171","ART 220","ART 221","ART 222","ART 223","ART 224",
+                      "ART 225","ART 228","ART 229","ART 230","ART 232","ART 233","ART 234","ART 236","ART 240",
+                      "ART 241","ART 248","ART 270","ART 296","ART 397","ART 471","MUS 105","MUS 107","MUS 108",
+                      "MUS 109","MUS 160","MUS 162","MUS 164","MUS 199","MUS 200","MUS 202","MUS 203","MUS 205",
+                      "MUS 208","MUS 209","MUS 224","MUS 390","MUS 471","COM 110","COM 114","COM 117","COM 120",
+                      "COM 122","COM 210","COM 211","COM 213","COM 246","COM 313","COM 356"],
+           
+              'English and Modern Languages': ["ENG 110","ENG 161","ENG 162","ENG 241","ENG 242","ENG 243","ENG 244","ENG 251","ENG 252","ENG 253",
+                          "ENG 254","ENG 255","ENG 262","ENG 263","ENG 281","ENG 310","ENG 311","ENG 312","ENG 313","ENG 314","ENG 315",
+                          "ENG 321","ENG 322","ENG 323","ENG 324","ENG 325","ENG 332","ENG 333","ENG 334","ENG 335","ENG 336","ENG 337",
+                          "ENG 338","ENG 341","ENG 343","ENG 344","ENG 345","ENG 349","ENG 350","ENG 351","ENG 352","ENG 361","ENG 363",
+                          "ENG 364","ENG 365","ENG 366","ABA 101","ABA 102","ABA 201","CHI 101","CHI 102","CHI 201","ESL 125","ESL 135",
+                          "ESL 136","ESL 140","ESL 145","ESL 155","FRE 101","FRE 102","FRE 201","FRE 215","ITA 101","ITA 102","ITA 201",
+                          "ITA 215","ITA 305","ITA 330","ITA 331","ITA 335","ITA 336","SPA 101","SPA 102","SPA 103","SPA 104","SPA 105",
+                          "SPA 106","SPA 201","SPA 209","SPA 215","SPA 216","SPA 220","SPA 224","SPA 305","SPA 307","SPA 309","SPA 330",
+                          "SPA 331","SPA 335","SPA 336"],
+          
+          'Social and Behavioral Sciences':["HIS 101","HIS 102","HIS 111","HIS 112","HIS 213","HIS 216","HIS 221","HIS 223","HIS 224","HIS 225","HIS 230",
+                          "HIS 232","HIS 234","HIS 235","HIS 236","HIS 240","HIS 245","HIS 249","HIS 250","HIS 253","HIS 254","HIS 260",
+                          "HIS 263","HIS 267","HIS 310","HIS 314","HIS 315","HIS 316","HIS 320","HIS 336","HIS 340","HIS 344","HIS 390",
+                          "POL 100","POL 101","POL 103","POL 106","POL 107","POL 115","POL 200","POL 201","POL 206","POL 209","POL 210",
+                          "POL 213","POL 225","POL 234","POL 235","POL 236","POL 302","POL 303","POL 311","POL 321","POL 340","POL 390",
+                          "PSY 111","PSY 204","PSY 205","PSY 206","PSY 237","SOC 101","SOC 152","SOC 161","SOC 166","SOC 255"],
+
+          'Math and Science':["MAT 110","MAT 114","MAT 115","MAT 116","MAT 118","MAT 129","MAT 136","MAT 220","MAT 221","MAT 225","BIO 110","BIO 112","BIO 114",
+                    "BIO 120","BIO 126","BIO 150","BIO 151","BIO 232","BIO 280","CHE 103","CHE 110","CHE 112","CHE 113","CHE 132","CHE 200","ENV 101",
+                    "GEO 200","PHY 270","ESC 115","ESC 125","ESC 127","ESC 130"],
+
+          'Philosophy, Theology and Religious Studies and Ethics':["PHI 100","PHI 102","PHI 201","PHI 225","PHI 231","PHI 237","PHI 241","PHI 260","PHI 268","PHI 270",
+                                      "PHI 275","PHI 280","PHI 281","PHI 290","PHI 301","PHI 310","PHI 313","PHI 315","PHI 322","PHI 324",
+                                      "PHI 330","PHI 340","PHI 352","PHI 355","PHI 356","PHI 357","PHI 390","TRS 100","TRS 101","TRS 104",
+                                      "TRS 220","TRS 221","TRS 222","TRS 225","TRS 227","TRS 230","TRS 241","TRS 242","TRS 252","TRS 254",
+                                      "TRS 260","TRS 262","TRS 263","TRS 265","TRS 273","TRS 275","TRS 281","TRS 285","TRS 340","TRS 355",
+                                      "TRS 390","ETH 250","ETH 252","ETH 254","ETH 255","ETH 257","ETH 258","ETH 260","ETH 278","ETH 279",
+                                      "ETH 280","ETH 288","ETH 290","ETH 318","ETH 390","PHI 250","PHI 252","PHI 254","PHI 255","PHI 257",
+                                      "PHI 258"],
+
+          
+          'Physical Education':["PED 110","PED 112","PED 122","PED 133","PED 134","PED 139","PED 142","PED 144","PED 145","PED 146","PED 148","PED 150","PED 153","PED 154",
+                    "PED 155","PED 160","PED 162","PED 164","PED 166","PED 174","PED 178","PED 185","PED 189","PED 193","PED 200","PED 205","PED 209","PED 296"],
+
+          'Core':["COR 324","COR 326","COR 332","COR 333","COR 335","COR 336","COR 337","COR 338","COR 341","COR 342","COR 344","COR 345","COR 346","COR 347","COR 348",
+            "COR 349","COR 352","COR 354","COR 355","COR 358","COR 361","COR 362","COR 363","COR 365","COR 366","COR 367","COR 369","COR 380","COR 390"]
+        }
+
+//console.log(majors);
+/*console.log(genEdCourses);*/
+
+
+
+      function getRequirements(){
+        var selected_major = document.getElementById('sel1').value;
+        for(maj in majors){
+          if(selected_major == maj){
+            alert(majors[maj]);
+          }
+        }
+        
+      }
+
+    </script>
   </body>
 </html>
