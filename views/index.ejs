@@ -28,12 +28,12 @@
   	<div class = "container">
   		<div class = "row">
   			<h2>Find my schedule</h2>
-        <form id='majorForm' onsubmit='getRequirements()'>
+        <form id='majorForm' method='post' action='/'>
     			<div class = "col-md-6 ">	
     					<div  class="form-group">
     						<label for="sel1">Choose your major:</label>
-    						<select class="form-control" id="sel1">
-  	   					    <option>MAT</option>
+    						<select name="major" class="form-control" id="sel1">
+  	   					    <option value="MAT">MAT</option>
   	    					<option>CSC</option>
   	   						<option>COM</option>
   	    					<option>ENG</option>

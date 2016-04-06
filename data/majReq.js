@@ -1,7 +1,3 @@
-function saySomething(msg){
-	alert(msg);
-}
-
 var majors = {
 	'MAT':["MAT 115","MAT 225","MAT 221","MAT 222","MAT 223","MAT 229","MAT 232","MAT 251","MAT 324","MAT 330","MAT 345","MAT 460","MAT 491"],
 
@@ -10,6 +6,23 @@ var majors = {
 	"ENG":["ENG 110","ENG 241","ENG 242","ENG 243","ENG 244","ENG 251","ENG 255","ENG 263","ENG 282","ENG 311","ENG 469","ENG 491"],
 
 	"COM":["COM 230","COM 252","COM 256","COM 260","COM 352","COM 354","COM 355","COM 356","COM 360","COM 468","COM 488","COM 490"]
+}
+
+
+module.exports = {
+
+	getReqs: function(maj,callback){
+		
+
+        for(var m in majors){
+          if(m == maj){
+            return callback(null,majors[m]);
+          }
+        }
+
+
+	}
+
 }
 
 
