@@ -8,21 +8,16 @@ var majors = {
 	"COM":["COM 230","COM 252","COM 256","COM 260","COM 352","COM 354","COM 355","COM 356","COM 360","COM 468","COM 488","COM 490"]
 }
 
-
 module.exports = {
 
 	getReqs: function(maj,callback){
 		
-
         for(var m in majors){
           if(m == maj){
             return callback(null,majors[m]);
           }
         }
-
-
 	}
-
 }
 
 
