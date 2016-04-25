@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheets/style.css'>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+      <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+	</head>
+  
+  <body style="background-color: #008080;">
+    
+	 <nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class = "container">
+  			<div class = "navbar-header">
+  				<a class = "navbar-brand" href ="/">Course Registration</a>
+  			</div>
+  		</div>
+  	</nav>	
+
+  	<div class = "jumbotron">
+  		<div class = "container">
+  			<div id = 'titleWrap'>
+          <h1><%= title %></h1>
+    			<!-- <p>Welcome to <%= title %></p> -->
+    		</div>
+  		</div>
+  	</div>
+
+  	<div class = "container">
+  			<h2>Set Your Preferences</h2>
+        <form id="form_container" action ="/prefQuestionaire" method ="post">
+  
+          <div id = "subcontainer1" style="display: inline;">
+            <input class= "previousButton" id = "Mon" type="checkbox" value ="Mon">Mon
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+
+          <div class="subcontainer2" style="display: inline;">
+            <input class = "previousButton" id = "Tues" type ="checkbox" value="Tues">Tues
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+
+          <div class="subcontainer3" style="display: inline;">
+            <input class = "previousButton" id= "Wed" type ="checkbox" value="Wed">Wed
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+
+          <div class="subcontainer4" style="display: inline;">
+            <input class="previousButton" id= "Thurs" type= "checkbox" value= "Thurs">Thurs
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+          
+          <div class="subcontainer4" style="display: inline;">
+            <input class="previousButton" id= "Fri" type ="checkbox" value="Fri">Fri
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+           
+          <div class="subcontainer5" style="display: inline;">
+            <input class="previousButton" id= "Sat" type ="checkbox" value="Sat">Sat
+          </div>
+            <div class="form_sub" style="display: none;">
+              <input type ="checkbox" value ="Morning">Morning
+              <input type="checkbox" value ="afternoon">Afternoon
+              <input type="checkbox" value ="evening">Evening 
+            </div>
+            <Br></Br>
+           <input type="submit">
+        </form>
+    </div>
+
+    <% include jsIncludes.ejs%>
+    <script src="/jquery/jquery.js"></script>
+    <script>
+      $("#previousbutton").change(function() {
+       if(this.checked){
+        $("#form_sub_container2").show();
+      }
+        else{
+          $("#form_sub_container2").hide();
+      }})
+
+    $("#nextbutton").click(function() {
+      $("#form_container").find(":hidden").show().next();
+  //  $("#form_sub_container1").hide();
+    })
+    </script>
+  </body>
+</html>
